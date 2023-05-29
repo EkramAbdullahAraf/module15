@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', function () {
+        // Your profile route logic
+    })->name('profile');
+
+    Route::get('/settings', function () {
+        // Your settings route logic
+    })->name('settings');
+});
+Route::resource('products', 'ProductController');
+Route::post('/contact', ['ContactController']);
+Route::resource('posts', 'PostController');
+
